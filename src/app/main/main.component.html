@@ -1,5 +1,13 @@
-<div *ngFor="let a of myArr">
-  <h1>ID: {{a.id}} Name: {{a.name}}</h1>
-  <p>Profession: {{a.profession}}</p>
+Showing RED? <input [(ngModel)]="shouldShowRed"><br>
+ID: <input [(ngModel)]="newRecord.id"><br>
+Name: <input [(ngModel)]="newRecord.name"><br>
+Profession: <input [(ngModel)]="newRecord.profession"><br>
+School: <input [(ngModel)]="newRecord.school"><br>
+<button (click)="addRecord(newRecord)">Add record</button>
+<div *ngFor="let a of myArr; let i = index">
+  <h1 [ngClass]="{'red':shouldShowRed}">ID: {{a.id}} Name: {{a.name}}</h1>
+  <p [ngStyle]="pStyle">Profession: {{a.profession}}</p>
   <p>School: {{a.school}}</p>
+  <button (click)="toggleClass()">Toggle Red</button>
+  <button (click)="remove(i)">X</button>
 </div>
