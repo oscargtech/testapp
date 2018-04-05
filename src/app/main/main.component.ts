@@ -10,7 +10,7 @@ export class MainComponent implements OnInit {
   private myArr: Array<object> = [];
   private shouldShowRed: boolean = false;
   private pStyle: object = {};
-  private newRecord:object = {};
+  private newRecord: object = {};
 
   constructor(
     private http: HttpService
@@ -50,7 +50,7 @@ export class MainComponent implements OnInit {
       profession: record ? record.profession : 'default',
       school: record ? record.school : 'default'
     }
-    this.myArr.push(r);
+    this.myArr.unshift(r);
   }
 
 

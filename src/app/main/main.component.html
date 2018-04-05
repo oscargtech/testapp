@@ -3,7 +3,7 @@ ID: <input [(ngModel)]="newRecord.id"><br>
 Name: <input [(ngModel)]="newRecord.name"><br>
 Profession: <input [(ngModel)]="newRecord.profession"><br>
 School: <input [(ngModel)]="newRecord.school"><br>
-<button (click)="addRecord(newRecord)">Add record</button>
+<button (click)="addRecord(newRecord)" mat-raised-button color="primary">Add Record</button>
 <div *ngFor="let a of myArr; let i = index">
   <h1 [ngClass]="{'red':shouldShowRed}">ID: {{a.id}} Name: {{a.name}}</h1>
   <p [ngStyle]="pStyle">Profession: {{a.profession}}</p>
