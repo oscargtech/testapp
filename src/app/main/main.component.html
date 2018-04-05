@@ -8,6 +8,6 @@ School: <input [(ngModel)]="newRecord.school"><br>
   <h1 [ngClass]="{'red':shouldShowRed}">ID: {{a.id}} Name: {{a.name}}</h1>
   <p [ngStyle]="pStyle">Profession: {{a.profession}}</p>
   <p>School: {{a.school}}</p>
-  <button (click)="toggleClass()">Toggle Red</button>
-  <button (click)="remove(i)">X</button>
+  <button mat-raised-button color="primary" (click)="toggleClass()">Toggle Red</button>
+  <button mat-raised-button color="primary" (click)="remove(i)">X</button>
 </div>
