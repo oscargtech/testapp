@@ -10,8 +10,9 @@ import { AppRoutes } from './app.routing';
 import { AboutComponent } from './about/about.component';
 import { SharedServicesModule } from './shared-services/shared-services.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {AngularMaterialModule} from './angular-material/angular-material.module';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedServicesModule,
     FormsModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

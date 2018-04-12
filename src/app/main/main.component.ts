@@ -20,15 +20,14 @@ export class MainComponent implements OnInit {
     this.pStyle = {
       "color": "blue"
     };
-    let test: any = await this.http.get();
-    this.myArr = [
-      { id: 1, name: "lucas phan", profession: "dev", school: "csuf" },
-      { id: 2, name: "joe doe", profession: "dev", school: "csuf" },
-      { id: 3, name: "jane doe", profession: "dev", school: "csuf" },
-      { id: 4, name: "mike tison", profession: "dev", school: "csuf" },
-      { id: 7, name: "joe", profession: "dev", school: "csuf" }
+    // let test: any = await this.http.get('books/id/5acd38fd47036216c4d6d176');
+    // console.log('test--->', test);
+    await this.getBooks();
+  }
 
-    ]
+  async getBooks() {
+    this.myArr = await this.http.get('books');
+    this.myArr = await this.http.get('books');
     console.log('myArray--->', this.myArr);
   }
 
@@ -38,19 +37,45 @@ export class MainComponent implements OnInit {
     return this.shouldShowRed;
   }
 
-  remove(index: any) {
-    console.log('index of this item is:::', index);
-    this.myArr.splice(index, 1);
+  async remove(id: any) {
+    // this.myArr.splice(index, 1);
+    console.log('id from remove: ID', id);
+    let resp: any = await this.http.remove('books', id);
+    console.log('resp from remove .... resp" ', resp);
+    if (resp) {
+      console.log('from if statement...');
+      this.getBooks();
+    }
+
+
   }
 
-  addRecord(record?: any) {
-    let r = {
-      id: record ? record.id : 'default',
-      name: record ? record.name : 'default',
-      profession: record ? record.profession : 'default',
-      school: record ? record.school : 'default'
+  update(record) {
+    this.newRecord = record;
+  }
+
+  async addRecord(record?: any) {
+    let payload: any = {}, resp;
+    payload = {
+      title: record ? record.title : 'default',
+      genre: record ? record.genre : 'default',
+      author: record ? record.author : 'default',
+      read: false
     }
-    this.myArr.unshift(r);
+
+    if (record._id) {
+      // do update
+      resp = await this.http.update(`books/id/${record._id}`, payload);
+    } else {
+      // do create
+      console.log('payload from addRecord ', payload);
+      // this.myArr.unshift(r);
+      resp = await this.http.post('books', payload);
+      console.log('resp from after posting the book', resp);
+    }
+    if (resp) {
+      await this.getBooks();
+    }
   }
 
 
