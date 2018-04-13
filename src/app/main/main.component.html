@@ -1,19 +1,28 @@
-Showing RED? <input [(ngModel)]="shouldShowRed"><br>
-<div *ngIf="newRecord._id">
-  _id: <input [(ngModel)]="newRecord._id"><br>
-</div>
-title: <input [(ngModel)]="newRecord.title"><br>
-genre: <input [(ngModel)]="newRecord.genre"><br>
-author: <input [(ngModel)]="newRecord.author"><br>
-read: <input [(ngModel)]="newRecord.read"><br>
-<button (click)="addRecord(newRecord)" mat-raised-button color="primary">{{newRecord._id ? 'Update Record' : 'Add Record'}}</button>
-<div *ngFor="let a of myArr; let i = index">
-  <p>ID:{{a._id}}</p>
-  <p>Title:{{a.title}}</p>
-  <h1 [ngClass]="{'red':shouldShowRed}">ID: {{a.id}} Name: {{a.author}}</h1>
-  <p [ngStyle]="pStyle">genre: {{a.genre}}</p>
-  <p>read: {{a.read}}</p>
-  <button mat-raised-button color="primary" (click)="toggleClass()">Toggle Red</button>
-  <button mat-raised-button color="primary" (click)="remove(a._id)">X</button>
-  <button mat-raised-button color="primary" (click)="update(a)">Update</button>
+
+
+<button (click)="goToBookCreate()" mat-raised-button color="primary">Add a Book</button>
+<div class="card-container">
+  <mat-card class="book-card" *ngFor="let book of myArr">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Title: {{book.title}}</mat-card-title>
+      <mat-card-subtitle>Genre: {{book.genre}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>Written by: {{book.author}}</p>
+      <p>
+        The Shiba Inu is the smallest.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button class="btn-card" mat-raised-button color="primary" (click)="remove(book._id)">
+          <mat-icon>clear</mat-icon>
+        </button>
+        <button class="btn-card" mat-raised-button color="primary" (click)="update(book)">
+          <mat-icon>autorenew</mat-icon>
+        </button>
+
+    </mat-card-actions>
+  </mat-card>
 </div>

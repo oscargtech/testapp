@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../shared-services/http.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -13,7 +14,8 @@ export class MainComponent implements OnInit {
   private newRecord: object = {};
 
   constructor(
-    private http: HttpService
+    private http: HttpService,
+    private router: Router
   ) { }
 
   async ngOnInit() {
@@ -76,6 +78,10 @@ export class MainComponent implements OnInit {
     if (resp) {
       await this.getBooks();
     }
+  }
+
+  goToBookCreate() {
+    this.router.navigate(['book-create']);
   }
 
 

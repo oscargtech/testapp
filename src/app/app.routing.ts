@@ -2,6 +2,7 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router'
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MainComponent } from './main/main.component';
 import { AboutComponent } from './about/about.component';
+import { CreateBookComponent } from './create-book/create-book.component';
 
 const appRoutes: Routes = [
     {
@@ -12,6 +13,11 @@ const appRoutes: Routes = [
         path: 'about',
         component: AboutComponent,
         data: { title: 'About List' }
+    },
+    {
+        path: 'book-create',
+        component: CreateBookComponent,
+        data: { title: 'Create a book List' }
     },
     {
         path: 'not-found',
